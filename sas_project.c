@@ -412,6 +412,98 @@ void statistique(players player [],int nb_joueur){
     printf("6. Retourner au menu principal .");
     printf("choisir votre choix : ");
     scanf("%d",&choix);
+    switch(choix){
+        case 1:{
+            system("cls");
+            printf("le nombre total des joueur = %d",nb_joueur);
+            system("pause");
+            system("cls");
+            break;
+        }
+        case 2:{
+            system("cls");
+            int moy=0,i,s=0;
+            for(i=0;i<nb_joueur;i++){
+                s+=player[i].age;
+            }
+            moy=s/nb_joueur;
+            printf("age moyen des joueur = %d",moy);
+            system("pause");
+            system("cls");
+            break;
+        }
+        case 3:{
+            int n,i=0,x=0;
+            printf("saisir le nombre de but : ");
+            scanf("%d",&n);
+            for(i=0;i<nb_joueur;i++){
+                if (n<player[i].but){
+                    x=1;
+                    printf("ID : %d  | nom : %s | prenom : %s | numero maillot : %d | post : %s | age : %d | nombre de buts : %d\n",player[i].ID,player[i].nom,player[i].prenom,player[i].maillot,player[i].poste,player[i].age,player[i].but);
+                }
+            }
+            if(x==0){
+                system("cls");
+                printf("\n joueur non trouver !\n");
+                system("pause");
+                system("cls");
+            }
+            system("pause");
+            system("cls");
+            break;
+        }
+        case 4:{
+            int i=0,c,ind;
+            system("cls");
+            c=player[0].but;
+            for(i=0;i<nb_joueur;i++){
+                if(c<player[i].but){
+                    c=player[i].but;
+                    ind=player[i].ID;
+                }
+            }
+            printf("le meilleur buteur est :");
+            printf("ID : %d  | nom : %s | prenom : %s | numero maillot : %d | post : %s | age : %d | nombre de buts : %d\n",player[ind].ID,player[ind].nom,player[ind].prenom,player[ind].maillot,player[ind].poste,player[ind].age,player[ind].but);
+            system("pause");
+            system("cls");
+            break;
+        }
+        case 5:{
+            int i=0,c,ind,ind2,c2;
+            system("cls");
+            c=player[0].age;
+            for(i=0;i<nb_joueur;i++){
+                if(c<player[i].age){
+                    c=player[i].age;
+                    ind=player[i].ID;
+                }
+            }
+            printf("le joueur le  plus agee est :\n");
+            printf("ID : %d  | nom : %s | prenom : %s | numero maillot : %d | post : %s | age : %d | nombre de buts : %d\n",player[ind].ID,player[ind].nom,player[ind].prenom,player[ind].maillot,player[ind].poste,player[ind].age,player[ind].but);
+            c2=player[0].age;
+            for(i=0;i<nb_joueur;i++){
+                if(c2>player[i].age){
+                    c2=player[i].age;
+                    ind2=player[i].ID;
+                }
+            }
+            printf("le joueur le  plus agee est :\n");
+            printf("ID : %d  | nom : %s | prenom : %s | numero maillot : %d | post : %s | age : %d | nombre de buts : %d\n",player[ind2].ID,player[ind2].nom,player[ind2].prenom,player[ind2].maillot,player[ind2].poste,player[ind2].age,player[ind2].but);
+            system("pause");
+            system("cls");
+            break;
+        }
+        case 6:{
+            break;
+        }
+        default:{
+            system("cls");
+            printf("!!!!  erreur de saisie  !!!!");
+            system("pause");
+
+            break;
+        }
+    }
 
 }
 int main(){
@@ -469,13 +561,18 @@ int main(){
                 break;
             }
             case 6:{
-                
+                statistique(player,nb_joueur);
                 system("pause");
                 system("cls");
                 break;
             }
             case 7:{
-                
+                char q;
+                system("cls");
+                printf("etes-vous sur ? [y/n] ");
+                scanf(" %c", &q);
+                if(q == 'y' || q == 'Y') exit(0);
+                break;
                 system("pause");
                 system("cls");
                 break;
