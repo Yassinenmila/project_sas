@@ -1,16 +1,17 @@
 #include <stdio.h>
 #include <string.h>
 #include <stdlib.h>
-
+// declare de la structure 
 typedef struct{
-    int ID;
-    char nom[50];
-    char prenom[50];
-    int maillot;
-    char poste[30];
-    int age ;
-    int but ;
+    int ID;             // id du joueur 
+    char nom[50];       //nom du joueur 
+    char prenom[50];    //prenom du joueur 
+    int maillot;        //numero de maillot du joueur 
+    char poste[30];     // le post du joueur dans le terrains
+    int age ;           // l'age du joueur 
+    int but ;           // nombre de buts marqués
 }players;
+// ------ fonction pour retourner le plus grand (ID) ------
 int max_id(players player[],int nb_joueur){
     if(nb_joueur == 0) return 0;
     int new_id,i; 
@@ -25,9 +26,8 @@ int max_id(players player[],int nb_joueur){
 // ------ function pour ajouter les joueur dans la structure ------
 int ajoute(players player[],int nb_joueur){
     int choice=0;
-
     system("cls");
-                printf("<========>Ajouter un joueur<========>\n");
+                printf("<========>Menu d'ajout<========>\n");
                 printf("1. Ajouter un nouveau joueur .\n");
                 printf("2. Ajouter plusieur joueur en une seule operation .\n");
                 printf("3. Retourner au Menu Principal .\n");
@@ -35,9 +35,11 @@ int ajoute(players player[],int nb_joueur){
                 scanf("%d",&choice);
                 switch(choice){
                     case 1:{
+                        // le cas d'ajouter un seul joueur 
                         system("cls");
                         int index = nb_joueur;
                         int pst = 0;
+                        // prendre le plus grand ID est incrementer pour le stocker dans le nouveau ajout 
                         player[index].ID = max_id(player,nb_joueur) + 1 ;
                         printf("saisire le nom du joueur : ");
                         scanf("%s",player[index].nom);
@@ -48,6 +50,7 @@ int ajoute(players player[],int nb_joueur){
                         printf("saisir le nombre de maillot du joueur : ");
                         scanf("%d",&player[index].maillot);
                         system("cls");
+                        // menu d'ajout du post de joueur 
                         while(1) {
                                 printf("<========>post du joueur<========>\n1. gardien\n2. milieu\n3. attaquant\n4. defenseur\n");
                                 printf("Choisir le poste : ");
@@ -79,11 +82,12 @@ int ajoute(players player[],int nb_joueur){
                             system("cls");
                             printf("joueur ajouter :) \n");
                             system("pause");
-                            
+                            // augmanter le nombre total des joueur 
                             nb_joueur++;
                         break;
                     } 
                     case 2:{
+                        // ajout de plusieur joueur 
                         system("cls");
                         int n=0,j=0;
                         int index = nb_joueur;
@@ -136,23 +140,29 @@ int ajoute(players player[],int nb_joueur){
                             system("cls");
                             printf("joueur ajouter :)");
                             system("pause");
+                            // incrementation de nombre de joueur ajouter avec le nombre de joueur total
                          nb_joueur++;   
                         }
                         break;
                     }
                     case 3:{
+                        // retourner au menu principal
                         system("cls");
                         break;
                     }
                     default:{
+                        // en cas de saisie d'un choix incorrect
+                        system("cls");
                         system("pause");
-                        printf("!! ERREUR DE SAISIE !!");
+                        printf("!! ERREUR DE SAISIE :( !!");
                         system("pause");
                         break;
                     }               
                 }
+                //  retourner le nouveau nombre total de joueur enregistrer dans la structure
                 return nb_joueur;
-            }                    
+            }               
+// ------ function pour afficher les joueur dans la structure ------   
 void afficher (players player [],int nb_joueur){
     // int i;
     // for(i=0;i<nb_joueur;i++){
@@ -167,11 +177,12 @@ void afficher (players player [],int nb_joueur){
     printf("2. Trier les joueurs par age .\n");
     printf("3. Afficher les joueurs par poste.\n");
     printf("4. Retourner au Menu Principal .\n");
-                printf("saisir votre choix : ");
-                scanf("%d",&choi);
-                system("cls");
-                switch(choi){
+    printf("saisir votre choix : ");
+    scanf("%d",&choi);
+    system("cls");
+            switch(choi){
                     case 1:{
+                        // tri par alphabe le nom type 
                         for(i=0;i<nb_joueur-1;i++){
                             for(j=0;j<nb_joueur-i-1;j++){
                                 if(strcmp(player[j].nom,player[j+1].nom)>0){
@@ -182,6 +193,7 @@ void afficher (players player [],int nb_joueur){
                             }
                         }
                         system("cls");
+                        // affichage des joueurs par trie 
                         for(i=0;i<nb_joueur;i++){
                              printf("ID : %d  | nom : %s | prenom : %s | numero maillot : %d | post : %s | age : %d | nombre de buts : %d\n",player[i].ID,player[i].nom,player[i].prenom,player[i].maillot,player[i].poste,player[i].age,player[i].but);
                         }
@@ -264,7 +276,7 @@ void afficher (players player [],int nb_joueur){
                         system("pause");
                         system("cls");
                     }
-                } 
+            } 
                
 }      
 void modifier (players player [],int nb_joueur){
@@ -613,7 +625,7 @@ int main(){
                 break;
             }
             default:{
-                printf("!!!!!!!!ERROR DE SAISIE!!!!!!!!");
+                printf("!!!!!!!!ERROR DE SAISIE!!!!!!!!\n");
                 system("pause");
                 system("cls");
                 break;
