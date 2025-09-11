@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <string.h>
 #include <stdlib.h>
+
 typedef struct{
     int ID;
     char nom[50];
@@ -21,6 +22,7 @@ int max_id(players player[],int nb_joueur){
             }
     return new_id;
 }
+// ------ function pour ajouter les joueur dans la structure ------
 int ajoute(players player[],int nb_joueur){
     int choice=0;
 
@@ -76,6 +78,7 @@ int ajoute(players player[],int nb_joueur){
                             scanf("%d",&player[index].but);
                             system("cls");
                             printf("joueur ajouter :) \n");
+                            system("pause");
                             
                             nb_joueur++;
                         break;
@@ -88,6 +91,7 @@ int ajoute(players player[],int nb_joueur){
                         printf("combien de joueur tu veux ajouter : ");
                         scanf("%d",&n);
                         for(j=index;j<index+n;j++){   
+                            system("cls");
                             int pst = 0;
                             player[j].ID=next_id++;
                             printf("saisire le nom du joueur : ");
@@ -100,6 +104,7 @@ int ajoute(players player[],int nb_joueur){
                             scanf("%d",&player[j].maillot);
                             system("cls");
                             while(1) {
+                                system("cls");
                                 printf("Poste du joueur :\n1. gardien\n2. milieu\n3. attaquant\n4. defenseur\n");
                                 printf("Choisir le poste : ");
                                 scanf("%d", &pst);
@@ -120,6 +125,7 @@ int ajoute(players player[],int nb_joueur){
                                     break;
                                 }
                                 printf("Erreur de saisie !\n");
+                                system("pause");
                             }
                             system("cls");
                             printf("saisir age du joueur : ");
@@ -129,6 +135,7 @@ int ajoute(players player[],int nb_joueur){
                             scanf("%d",&player[j].but);
                             system("cls");
                             printf("joueur ajouter :)");
+                            system("pause");
                          nb_joueur++;   
                         }
                         break;
@@ -138,6 +145,7 @@ int ajoute(players player[],int nb_joueur){
                         break;
                     }
                     default:{
+                        system("pause");
                         printf("!! ERREUR DE SAISIE !!");
                         system("pause");
                         break;
@@ -150,6 +158,7 @@ void afficher (players player [],int nb_joueur){
     // for(i=0;i<nb_joueur;i++){
     //     printf("ID : %d  | nom : %s | prenom : %s | numero maillot : %d | post : %s | age : %d | nombre de buts : %d\n",player[i].ID,player[i].nom,player[i].prenom,player[i].maillot,player[i].poste,player[i].age,player[i].but);
     // }
+    system("cls");
     int choi=0,i,j;
     players c ;
     system("cls");
@@ -260,6 +269,7 @@ void afficher (players player [],int nb_joueur){
 }      
 void modifier (players player [],int nb_joueur){
     int i,ind,x=0;
+    system("cls");
     printf("saisir l'ID du joueur : ");
     scanf("%d",&ind);
     for(i=0;i<nb_joueur;i++){
@@ -328,6 +338,7 @@ void modifier (players player [],int nb_joueur){
                 }   
                 default:{
                     printf("!!!!erreur de saisie!!!!");
+                    system("pause");
                     break;
                 }
             }
@@ -342,6 +353,7 @@ void modifier (players player [],int nb_joueur){
 }          
 int suprimer (players player [],int nb_joueur){
 int i,ind,x=0,j=0;
+system("cls");
     printf("saisir l'ID du joueur : ");
     scanf("%d",&ind);
     for(i=0;i<nb_joueur;i++){
@@ -366,6 +378,7 @@ int i,ind,x=0,j=0;
 }
 void recherche (players player [],int nb_joueur ){
     int choix,i;
+    system("cls");
     printf("<========>Menu Recherche<========>\n");
     printf("1. Recherche par idantifiant(ID) du joueur  .\n");
     printf("2. Recherche par le nom du joueur .\n");
@@ -422,11 +435,13 @@ void recherche (players player [],int nb_joueur ){
             printf("!!!!  erreur de saisie  !!!!");
             system("pause");
             system("cls");
+            break;
         }
     }
 }
 void statistique(players player [],int nb_joueur){
     int choix=0;
+    system("cls");
     printf("<========>Menu Statistiques<========>\n");
     printf("1. Afficher le nombre total de joueurs dans l'equipe .\n");
     printf("2. Afficher l'age moyen des joueurs .\n");
@@ -439,7 +454,7 @@ void statistique(players player [],int nb_joueur){
     switch(choix){
         case 1:{
             system("cls");
-            printf("le nombre total des joueur = %d",nb_joueur);
+            printf("le nombre total des joueur = %d\n",nb_joueur);
             system("pause");
             system("cls");
             break;
@@ -561,38 +576,31 @@ int main(){
         switch(choix){
             case 1:{
                 nb_joueur = ajoute(player, nb_joueur);
-                system("pause");
                 system("cls");
                 break;
             }
             case 2:{
-                system("cls");
                 afficher(player,nb_joueur);
-                system("pause");
                 system("cls");
                 break;
             }
             case 3:{
                 modifier(player,nb_joueur);
-                system("pause");
                 system("cls");
                 break;
             }
             case 4:{
                 nb_joueur = suprimer(player, nb_joueur);
-                system("pause");
                 system("cls");
                 break;
             }
             case 5:{
                 recherche(player,nb_joueur);
-                system("pause");
                 system("cls");
                 break;
             }
             case 6:{
                 statistique(player,nb_joueur);
-                system("pause");
                 system("cls");
                 break;
             }
@@ -603,14 +611,12 @@ int main(){
                 scanf(" %c", &q);
                 if(q == 'y' || q == 'Y') exit(0);
                 break;
-                system("pause");
-                system("cls");
-                break;
             }
             default:{
                 printf("!!!!!!!!ERROR DE SAISIE!!!!!!!!");
                 system("pause");
                 system("cls");
+                break;
             }
         }
     }
