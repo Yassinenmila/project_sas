@@ -576,12 +576,12 @@ int main(){
     while(1){
         system("cls");
         printf("<========>MENU PRINCIPAL<========>\n");
-        printf("1. Ajouter un joueur .\n");
-        printf("2. Afficher la liste de tous les joueurs .\n");
-        printf("3. modifier un joueur .\n");
-        printf("4. Supprimer un joueur .\n");
-        printf("5. Recherche un joueur .\n");
-        printf("6. statistiques .\n");
+        printf("1. Menu D'Ajoute .\n");
+        printf("2. Menu D'Affichage .\n");
+        printf("3. Menu de Modification .\n");
+        printf("4. Menu Supression .\n");
+        printf("5. Menu Recherche .\n");
+        printf("6. Menu Statistiques .\n");
         printf("7. QUITTER .\n");
         printf("saisir votre choix : ");
         scanf("%d",&choix);
