@@ -502,7 +502,7 @@ if (nb_joueur>0){
                 s+=player[i].age;
             }
             moy=s/nb_joueur;
-            printf("age moyen des joueur = %d",moy);
+            printf("age moyen des joueur = %d\n",moy);
             system("pause");
             system("cls");
             break;
