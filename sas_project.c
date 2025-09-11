@@ -218,11 +218,13 @@ void afficher (players player [],int nb_joueur){
                         break;
                     }
                     case 3:{
+                        // trie par post 
                         int psts;
                         while(1) {
                                 printf("Poste du joueur :\n1. gardien\n2. milieu\n3. attaquant\n4. defenseur\n");
                                 printf("Choisir le poste : ");
                                 scanf("%d", &psts);
+                                // trier les gardien
                                 if(psts == 1){ 
                                     for(i=0;i<nb_joueur;i++){
                                         if(strcmp(player[i].poste,"gardien")==0){
@@ -232,6 +234,7 @@ void afficher (players player [],int nb_joueur){
                                     system("pause");
                                     break;
                                 }
+                                // trier les milieu
                                 if(psts == 2){ 
                                     for(i=0;i<nb_joueur;i++){
                                         if(strcmp(player[i].poste,"milieu")==0){
@@ -241,6 +244,7 @@ void afficher (players player [],int nb_joueur){
                                     system("pause");
                                     break;
                                 }
+                                // trier les attaquant
                                 if(psts == 3){ 
                                     for(i=0;i<nb_joueur;i++){
                                         if(strcmp(player[i].poste,"attaquant")==0){
@@ -250,6 +254,7 @@ void afficher (players player [],int nb_joueur){
                                     system("pause");
                                     break;
                                 }
+                                // trier les defenseur
                                 if(psts == 4){ 
                                     for(i=0;i<nb_joueur;i++){
                                         if(strcmp(player[i].poste,"defenseur")==0){
@@ -262,15 +267,18 @@ void afficher (players player [],int nb_joueur){
                                 if(psts==5){
                                     break;
                                 }
+                                // en cas d'erreur de saisie
                                 printf("Erreur de saisie !\n");
                                 system("pause");
                             }
                         break;
                     }
                     case 4:{
+                        // retoure au menu principal
                         break;
                     }
                     default:{
+                        // en cas d'erreur de saisie
                         system("cls");
                         printf("!!!!  erreur de saisie  !!!!\n");
                         system("pause");
@@ -278,9 +286,11 @@ void afficher (players player [],int nb_joueur){
                     }
             } 
                
-}      
+} 
+// ------ function pour modifier les joueur dans la structure ------     
 void modifier (players player [],int nb_joueur){
     int i,ind,x=0;
+if(nb_joueur>0){
     system("cls");
     printf("saisir l'ID du joueur : ");
     scanf("%d",&ind);
@@ -349,7 +359,7 @@ void modifier (players player [],int nb_joueur){
                     break;
                 }   
                 default:{
-                    printf("!!!!erreur de saisie!!!!");
+                    printf("!!!!erreur de saisie!!!!\n");
                     system("pause");
                     break;
                 }
@@ -358,14 +368,22 @@ void modifier (players player [],int nb_joueur){
     }
     if(x==0){
         system("cls");
-        printf("joueur non trouver !");
+        printf("joueur non trouver !\n");
         system("pause");
         system("cls");
     }
-}          
+}
+else{
+    system("cls");
+    printf("la structure est vide !!\n");
+    system("pause");
+}
+}  
+// ------ function pour suprimer les joueur dans la structure ------             
 int suprimer (players player [],int nb_joueur){
 int i,ind,x=0,j=0;
 system("cls");
+// recherche du joueur a partir de ID
     printf("saisir l'ID du joueur : ");
     scanf("%d",&ind);
     for(i=0;i<nb_joueur;i++){
@@ -378,6 +396,7 @@ system("cls");
             printf("joueur suprimer :) ");
             system("pause");
             break;
+            // apres cette operation le joueur sera supprimer de la structure 
         }
     }
     if(x==0){
@@ -388,6 +407,7 @@ system("cls");
     }
     return nb_joueur;
 }
+// ------ function pour rechercher les joueur dans la structure ------             
 void recherche (players player [],int nb_joueur ){
     int choix,i;
     system("cls");
@@ -399,6 +419,7 @@ void recherche (players player [],int nb_joueur ){
     scanf("%d",&choix);
     switch(choix){
         case 1:{
+            system("cls");
             int n=0,x=0;
             printf("saisir identifiant (ID) du joueur: ");
             scanf("%d",&n);
@@ -419,6 +440,7 @@ void recherche (players player [],int nb_joueur ){
             break;
         }
         case 2:{
+            system("cls");
             int x=0;
             char n[40];
             printf("saisir le nom du joueur: ");
@@ -444,14 +466,16 @@ void recherche (players player [],int nb_joueur ){
         }
         default:{
             system("cls");
-            printf("!!!!  erreur de saisie  !!!!");
+            printf("!!!!  erreur de saisie  !!!!\n");
             system("pause");
             system("cls");
             break;
         }
     }
 }
+// ------ function pour statistique les joueur dans la structure ------             
 void statistique(players player [],int nb_joueur){
+if (nb_joueur>0){   
     int choix=0;
     system("cls");
     printf("<========>Menu Statistiques<========>\n");
@@ -555,20 +579,26 @@ void statistique(players player [],int nb_joueur){
             break;
         }
     }
-
+} 
+else{
+    system("cls");
+    printf("la structure est vide !!\n");
+    system("pause");
 }
+}
+// ------ function principal (main) ------             
 int main(){
     players player[100]={
-        {1,"lionel","messi",10,"attaquant",38,734},
-        {2,"cristiano","ronaldo",7,"milieu",40,790},
+        {1,"vardy","jamie",9,"attaquant",38,190},
+        {2,"makelele","claude",4,"defenseur",51,8},
         {3,"iker","casillas",1,"gardien",44,0},
         {4,"sergio","ramos",4,"defenseur",39,117},
-        {5,"deassismoreira","ronaldinho",10,"attaquant",45,280},
+        {5,"leiteribeiro","adriano",10,"attaquant",41,250},
         {6,"luisnazariodelima","ronaldo",9,"milieu",48,414},
         {7,"baggio","roberto",10,"attaquant",58,318},
-        {8,"cruyff","johan",14,"milieu",68,402},
+        {8,"guti","josemaria",14,"milieu",48,64},
         {9,"buffon","gianluigi",1,"gardien",47,0},
-        {10,"zoff","dino",1,"gardien",82,0}
+        {10,"canizares","Santiago",1,"gardien",55,0}
     };
     int choix=0;
     int nb_joueur=10;
