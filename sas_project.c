@@ -42,7 +42,7 @@ int ajoute(players player[],int nb_joueur){
                         // prendre le plus grand ID est incrementer pour le stocker dans le nouveau ajout 
                         player[index].ID = max_id(player,nb_joueur) + 1 ;
                         printf("saisire le nom du joueur : ");
-                        scanf("%s",player[index].nom);
+                        scanf("%s",player[index].nom);                        
                         system("cls");
                         printf("saisir le prenom du joueur : ");
                         scanf("%s",player[index].prenom);
@@ -381,34 +381,43 @@ else{
 }  
 // ------ function pour suprimer les joueur dans la structure ------             
 int suprimer (players player [],int nb_joueur){
-int i,ind,x=0,j=0;
-system("cls");
-// recherche du joueur a partir de ID
-    printf("saisir l'ID du joueur : ");
-    scanf("%d",&ind);
-    for(i=0;i<nb_joueur;i++){
-        if(player[i].ID == ind){
-            x=1;
-            for(j=i;j<nb_joueur-1;j++){
-                player[j]=player[j+1];
+    if(nb_joueur!=0){
+    int i,ind,x=0,j=0;
+    system("cls");
+    // recherche du joueur a partir de ID
+        printf("<========>Menu de Supression<========>\n");
+        printf("saisir l'ID du joueur : ");
+        scanf("%d",&ind);
+        for(i=0;i<nb_joueur;i++){
+            if(player[i].ID == ind){
+                x=1;
+                for(j=i;j<nb_joueur-1;j++){
+                    player[j]=player[j+1];
+                }
+                nb_joueur--;
+                printf("joueur suprimer :) ");
+                system("pause");
+                break;
+                // apres cette operation le joueur sera supprimer de la structure 
             }
-            nb_joueur--;
-            printf("joueur suprimer :) ");
-            system("pause");
-            break;
-            // apres cette operation le joueur sera supprimer de la structure 
         }
+        if(x==0){
+            system("cls");
+            printf("\n joueur non trouver !\n");
+            system("pause");
+            system("cls");
+        }
+        return nb_joueur;
     }
-    if(x==0){
+    else {
         system("cls");
-        printf("\n joueur non trouver !\n");
+        printf("la structure est vide !!!\n");
         system("pause");
-        system("cls");
     }
-    return nb_joueur;
 }
 // ------ function pour rechercher les joueur dans la structure ------             
 void recherche (players player [],int nb_joueur ){
+if(nb_joueur!=0){
     int choix,i;
     system("cls");
     printf("<========>Menu Recherche<========>\n");
@@ -471,6 +480,12 @@ void recherche (players player [],int nb_joueur ){
             system("cls");
             break;
         }
+        }
+    }
+    else {
+        system("cls");
+        printf("la structure est vide !!!\n");
+        system("pause");
     }
 }
 // ------ function pour statistique les joueur dans la structure ------             
